@@ -13,6 +13,8 @@ import os
 import unittest
 from pathlib import Path
 
+from typing import List
+
 DAY_DIR = Path(__file__).parent.parent
 PACKAGE_NAME = os.getenv("LAB_SOLUTION_PACKAGE", "src")
 
@@ -149,7 +151,7 @@ class TestEmbeddingStore(unittest.TestCase):
     def _make_store(self) -> EmbeddingStore:
         return EmbeddingStore(collection_name="test", embedding_fn=_mock_embed)
 
-    def _make_docs(self, n: int = 3) -> list[Document]:
+    def _make_docs(self, n: int = 3) -> List[Document]:
         return [
             Document(id=f"doc{i}", content=f"This is document number {i}.", metadata={})
             for i in range(n)
